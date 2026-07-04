@@ -1,0 +1,27 @@
+package com.mkchtv.cleantemplate.auth
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.mkchtv.cleantemplate.common.component.LoadingScreen
+import com.mkchtv.cleantemplate.domain.auth.entity.AuthState
+
+@Composable
+fun AuthProtectedScreen(
+    content: @Composable () -> Unit,
+) = Screen(content = content)
+
+@Composable
+private fun Screen(
+    viewModel: AuthProtectedViewModel = hiltViewModel(),
+    content: @Composable () -> Unit,
+) {
+    val authState by viewModel.authStateFlow.collectAsState(AuthState.LOADING)
+
+    when (authState) {
+        AuthState.LOADING -> LoadingScreen()
+        AuthState.AUTH_REQUIRED -> AuthScreen()
+        AuthState.AUTHENTICATED -> content()
+    }
+}
