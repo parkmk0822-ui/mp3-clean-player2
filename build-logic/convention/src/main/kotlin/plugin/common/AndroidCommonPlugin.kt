@@ -15,6 +15,7 @@ internal class AppAndroidCommonPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.application")
+                apply("org.jetbrains.kotlin.android")
                 apply("org.jlleitschuh.gradle.ktlint")
             }
             configure(extensions.getByType<ApplicationExtension>())
