@@ -12,5 +12,8 @@ dependencies {
     implementation(project(":ui:common"))
     implementation(project(":ui:element-details"))
     implementation(project(":ui:element-list"))
+    implementation("androidx.media3:media3-exoplayer:1.2.1")
+    implementation("androidx.documentfile:documentfile:1.0.1")
+    implementation("androidx.media3:media3-session:1.2.1")
     implementation(project(":ui:home"))
 }

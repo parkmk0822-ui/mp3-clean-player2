@@ -53,7 +53,7 @@ private fun Project.applyPlugins() {
     }
 }
 
-private fun Project.configure(commonExtension: CommonExtension) {
+private fun Project.configure(commonExtension: CommonExtension<*, *, *, *, *, *>) {
 
     commonExtension.buildFeatures.compose = true
 
